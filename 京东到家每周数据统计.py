@@ -13,6 +13,7 @@ from openpyxl.formatting.rule import ColorScaleRule, CellIsRule, FormulaRule
 import datetime
 from datetime import timedelta
 import pandas as pd
+from conf import *
 
 # 当前时间
 now = datetime.datetime.now()
@@ -85,7 +86,7 @@ ExcelDf = pd.DataFrame(data, columns=cols)
 # 京东到家
 JDheaders = {
 	'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.117 Safari/537.36',
-	'Cookie': 'store.o2o.jd.com1=Q27JKYFDKBBBHSVYSJF2I4UZXJJ7EZTZHJO2A5ZZFEBIUBB3EULCOLDJVEZEP5D7RL4LD27XZJPLYGU4HL4KYQC3LGJHW2QILGDB7IFG52AKHH76WR3WSAD4GIAQ54THKL6XJFIJ63DBAHTSJN4KV4SRA77F36WDQ53Q2GNX6JEUQUYXO36ILVX7Z4M63HXEBZIXN2GSKCSCWIYLCCX4NFQ35JMRQWGUV2ABVVADUHDL242OR3DMHY5S6RN33VRHSHZBQN5H3C4TCLUKVQGVYJFI7A',
+	'Cookie': 'store.o2o.jd.com1=' + COOKIE,
 }
 # 京东到家的商铺与编号
 JDshops = {'塔埔店': '11728789', '绿苑店': '11728788'}
