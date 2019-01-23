@@ -1,5 +1,6 @@
 import requests
 import time
+# 引入配置文件
 from conf import *
 
 '''
