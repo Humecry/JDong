@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>京东到家商品编码处理</title>
+<meta name="description" content="将多个商品编码连接一起">
+<meta name="keywords" content="商品编码">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	html {
+		height: 100%;
+		font-weight:bold;
+		font-size: 15px;
+		color: orange;
+		text-shadow: 1px 2px 3px rgba(67,8,7,0.8); 
+	}
+	body {			
+		background: #45484d; /* Old browsers */
+		background: -moz-radial-gradient(center, ellipse cover, #45484d 0%, #000000 100%); /* FF3.6-15 */
+		background: -webkit-radial-gradient(center, ellipse cover, #45484d 0%,#000000 100%); /* Chrome10-25,Safari5.1-6 */
+		background: radial-gradient(ellipse at center, #45484d 0%,#000000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	}
+	.container {
+		width: 800px;
+		height: 600px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.left,.right {
+		float: left;
+	}
+	.right {
+		margin-left: 114px;
+	}
+	.button {
+		display: inline-block;
+		*display: inline;
+		zoom: 1;
+		padding: 6px 20px;
+		margin: 0;
+		cursor: pointer;
+		border: 1px solid #bbb;
+		overflow: visible;
+		font: bold 13px arial, helvetica, sans-serif;
+		text-decoration: none;
+		white-space: nowrap;
+		color: #555;
+
+		background-color: #ddd;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(255,255,255,0)));
+		background-image: -webkit-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+		background-image: -moz-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+		background-image: -ms-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+		background-image: -o-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+		background-image: linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+
+		-webkit-transition: background-color .2s ease-out;
+		-moz-transition: background-color .2s ease-out;
+		-ms-transition: background-color .2s ease-out;
+		-o-transition: background-color .2s ease-out;
+		transition: background-color .2s ease-out;
+		background-clip: padding-box; /* Fix bleeding */
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		border-radius: 3px;
+		-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+		-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+		box-shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 2px 2px -1px rgba(0, 0, 0, .5), 0 1px 0 rgba(255, 255, 255, .3) inset;
+		text-shadow: 0 1px 0 rgba(255,255,255, .9);
+
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	/* Larger buttons styles */
+	mage: -moz-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
+	  background-ima.button.large{
+	  padding: 12px 30px;
+	  text-transform: uppercase;
+	}
+
+	.button.large:active{
+	  top: 2px;
+	}
+
+	/* Colored buttons styles */
+
+	.button.green{
+	  color: #fff;
+	  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+	  
+	  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,.3)), to(rgba(255,255,255,0)));
+	  background-image: -webkit-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
+	  background-ige: -ms-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
+	  background-image: -o-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
+	  background-image: linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
+	}
+
+	/* */
+
+	.button.green{
+	  background-color: #57a957;
+	  border-color: #57a957;
+	}
+
+	.button.green:hover{
+	  background-color: #00c062;
+	}
+
+	.button.green:active{
+	  background: #57a957;
+	}
+	pre {
+		text-align: left;
+	}
+</style>
+<script type="text/javascript">
+	window.onload = function() {
+		inputElement = document.getElementById("inputText")
+		inputElement.focus()
+		button = document.getElementById("trans")
+		button.onclick = function() {
+			outputElement = document.getElementById("outputText")
+			inputText = inputElement.value
+			outputArr = inputText.split("\n")
+			outputText = outputArr.join(",")
+			outputText = outputText.replace(/\s+/g,"")
+			outputElement.value = outputText
+			outputElement.select()
+		}
+	}
+</script>
+</head>
+<body>
+	<div class="container">
+		<h1>京东到家商品编码处理</h1>
+		<div class="left">
+			<h2>输入编码</h2>
+		    <textarea id="inputText" cols="40" rows="18"></textarea>
+		    <p><button id="trans" class="large green button">开始转换</button></p>
+		    <pre>
+<b>注意输入格式：</b>一行一个商品编码。
+<b>例如：</b>
+	2016885722
+	2016885769
+	2016886657
+	2016886706
+		    </pre>
+		</div>
+		<div class="right">
+			<h2>输出结果</h2>
+		    <textarea id="outputText" cols="40" rows="18"></textarea>
+		</div>
+    </div>
+</body>
+</html>
